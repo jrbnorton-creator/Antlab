@@ -91,6 +91,153 @@
   }
 
   /* ========================================
+     FIXED HEADER WITH LOGO
+     ======================================== */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 5%;
+    z-index: var(--z-header);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
+  }
+
+  .header.scrolled {
+    padding: 15px 5%;
+    background: rgba(0, 0, 0, 0.95);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .header-logo {
+    height: 50px;
+    width: auto;
+    transition: all 0.3s ease;
+  }
+
+  .header.scrolled .header-logo {
+    height: 40px;
+  }
+
+  /* ========================================
+     HERO SECTION WITH VIDEO
+     ======================================== */
+  .hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-video-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0.6) 50%,
+      rgba(0, 0, 0, 0.8) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: var(--color-text-light);
+    padding: 0 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 30px;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    animation: heroFadeIn 1.5s var(--transition-smooth);
+  }
+
+  .hero-title span {
+    display: block;
+    color: var(--color-primary);
+    font-size: 0.6em;
+    margin-top: 10px;
+    letter-spacing: 0.05em;
+  }
+
+  @keyframes heroFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    50% {
+      transform: translateX(-50%) translateY(10px);
+    }
+  }
+
+  .hero-scroll-indicator::after {
+    content: '↓';
+    font-size: 1.5rem;
+    color: var(--color-primary);
+  }
+
+  /* ========================================
      SCROLL PROGRESS INDICATOR
      ======================================== */
   .scroll-progress {
@@ -100,7 +247,7 @@
     width: 0;
     height: 3px;
     background: linear-gradient(90deg, var(--color-primary), #ff6b6b);
-    z-index: var(--z-header);
+    z-index: calc(var(--z-header) + 1);
     transition: width 0.1s linear;
   }
 
@@ -1119,6 +1266,27 @@
   }
 
   @media (max-width: 600px) {
+    .header-logo {
+      height: 40px;
+    }
+
+    .header.scrolled .header-logo {
+      height: 35px;
+    }
+
+    .hero-section {
+      min-height: 500px;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .hero-scroll-indicator {
+      bottom: 20px;
+      font-size: 0.6rem;
+    }
+
     #ice-concept-section {
       padding: 80px 5% 100px;
     }
@@ -1168,7 +1336,9 @@
     .scroll-progress,
     .back-to-top,
     .ice-start-label,
-    .ice-modal {
+    .ice-modal,
+    .header,
+    .hero-section {
       display: none !important;
     }
 
@@ -1217,8 +1387,54 @@
 </head>
 <body>
 
+<!-- ========================================
+     FIXED HEADER WITH LOGO
+     ======================================== -->
+<header class="header" role="banner">
+  <img
+    src="https://static1.squarespace.com/static/6864b21924d1db33e17adca9/t/6944b0bfe30a8f1fc142bb30/1766109376263/Antlab-FF6E00_Transparent.png"
+    alt="Antlab Logo"
+    class="header-logo"
+  >
+</header>
+
 <!-- Scroll Progress Indicator -->
 <div class="scroll-progress" role="progressbar" aria-label="Page scroll progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+<!-- ========================================
+     HERO SECTION WITH VIDEO
+     ======================================== -->
+<section class="hero-section" aria-label="Building Better Businesses">
+  <!-- Video Background -->
+  <div class="hero-video-wrapper">
+    <video
+      class="hero-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      poster="https://via.placeholder.com/1920x1080/000000/FF0000?text=Antlab"
+    >
+      <source src="YOUR_VIDEO_URL_HERE.mp4" type="video/mp4">
+      <!-- REPLACE YOUR_VIDEO_URL_HERE.mp4 WITH YOUR ACTUAL VIDEO URL -->
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-overlay" aria-hidden="true"></div>
+  </div>
+
+  <!-- Hero Content -->
+  <div class="hero-content">
+    <h1 class="hero-title">
+      Building Better
+      <span>Businesses.</span>
+    </h1>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="hero-scroll-indicator" aria-hidden="true">
+    Scroll to explore
+  </div>
+</section>
 
 <!-- ========================================
      SECTION 1: ICE CONCEPT
@@ -1475,6 +1691,20 @@
   }
 
   /* ========================================
+     HEADER SCROLL EFFECT
+     ======================================== */
+  function updateHeader() {
+    const header = document.querySelector('.header');
+    const scrolled = window.scrollY;
+
+    if (scrolled > 100) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }
+
+  /* ========================================
      BACKGROUND PARTICLES
      ======================================== */
   function createParticles() {
@@ -1712,6 +1942,7 @@
   window.addEventListener('scroll', () => {
     updateScrollProgress();
     updateBackToTopButton();
+    updateHeader();
 
     // Debounce intensive operations
     clearTimeout(scrollTimeout);
@@ -1736,6 +1967,7 @@
     createParticles();
     updateScrollProgress();
     updateBackToTopButton();
+    updateHeader();
 
     // Log initialization
     console.log('%c🐜 Antlab Engine Initialized', 'color: #FF0000; font-weight: bold; font-size: 16px;');
