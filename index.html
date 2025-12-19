@@ -198,45 +198,6 @@
     );
   }
 
-  .hero-content {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    color: var(--color-text-light);
-    padding: 0 5%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .hero-title {
-    font-size: clamp(3rem, 8vw, 6rem);
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    margin-bottom: 30px;
-    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-    animation: heroFadeIn 1.5s var(--transition-smooth);
-  }
-
-  .hero-title span {
-    display: block;
-    color: var(--color-primary);
-    font-size: 0.6em;
-    margin-top: 10px;
-    letter-spacing: 0.05em;
-  }
-
-  @keyframes heroFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
   .hero-scroll-indicator {
     position: absolute;
     bottom: 40px;
@@ -1340,10 +1301,6 @@
       min-height: 500px;
     }
 
-    .hero-title {
-      font-size: 2.5rem;
-    }
-
     .hero-scroll-indicator {
       bottom: 20px;
       font-size: 0.6rem;
@@ -1486,14 +1443,6 @@
     <div class="hero-overlay" aria-hidden="true"></div>
   </div>
 
-  <!-- Hero Content -->
-  <div class="hero-content">
-    <h1 class="hero-title">
-      Building Better
-      <span>Businesses.</span>
-    </h1>
-  </div>
-
   <!-- Scroll Indicator -->
   <div class="hero-scroll-indicator" aria-hidden="true">
     Scroll to explore
@@ -1509,7 +1458,6 @@
 
   <header class="ice-main-header reveal active">
     <h2 id="ice-heading">How we build better businesses<span>.</span></h2>
-    <p>A repeating cycle of improvement engineered for founders who demand absolute financial clarity.</p>
   </header>
 
   <div class="ice-cycle-wrapper reveal active" role="img" aria-label="ICE Model Cycle Diagram showing Identify, Cleanse, and Execute phases">
@@ -1531,19 +1479,19 @@
       </button>
       <div class="ice-dot-anchor" aria-hidden="true"></div>
       <h3>Identify</h3>
-      <p>Define the problem and outcome. Find the gaps others miss.</p>
+      <p>Identify the problem, define the outcome, and choose one North Star metric that moves and measures that outcome. Set the plan.</p>
     </article>
 
     <article class="ice-node pos-2">
       <div class="ice-dot-anchor" aria-hidden="true"></div>
       <h3>Cleanse</h3>
-      <p>Remove the clutter. Reset the base for reliable scaling.</p>
+      <p>Remove the mess. Fix the data so decisions are trustworthy. Cut noise before building.</p>
     </article>
 
     <article class="ice-node pos-3">
       <div class="ice-dot-anchor" aria-hidden="true"></div>
       <h3>Execute</h3>
-      <p>Build the system. Prove the model. Roll out the cycle.</p>
+      <p>Build the solution. Measure against the North Star and the outcome. <span style="text-decoration: underline; text-decoration-color: #FF0000; text-underline-offset: 2px;">Repeat</span>.</p>
     </article>
   </div>
 </section>
