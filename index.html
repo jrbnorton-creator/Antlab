@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Antlab - ICE Model, Integrated Financial Services & AI-Powered Business Intelligence for Founders">
+<meta name="keywords" content="bookkeeping, tax compliance, business advisory, financial services, ICE model">
+<meta name="author" content="Antlab">
+<meta name="theme-color" content="#000000">
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Antlab - ICE Model & Integrated Services">
+<meta property="og:description" content="A repeating cycle of improvement engineered for founders who demand absolute financial clarity.">
+<meta property="og:type" content="website">
+
+<title>Antlab - ICE Model, Integrated Services & AI Brain</title>
+
+<!-- Preconnect to external resources -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐜</text></svg>">
+
+<style>
+  /* ========================================
+     GLOBAL RESET & BASE STYLES
+     ======================================== */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    /* Color Palette */
+    --color-primary: #FF0000;
+    --color-primary-dim: rgba(255, 0, 0, 0.08);
+    --color-primary-glow: rgba(255, 0, 0, 0.3);
+    --color-bg-dark: #000;
+    --color-bg-light: #fff;
+    --color-text-dark: #111;
+    --color-text-light: #fff;
+    --color-text-muted: #666;
+    --color-text-subtle: #999;
+    --color-border: rgba(0, 0, 0, 0.08);
+
+    /* Spacing */
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
+    --spacing-2xl: 64px;
+
+    /* Animation */
+    --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-speed: 0.5s;
+
+    /* Z-index layers */
+    --z-modal: 9999;
+    --z-header: 1000;
+    --z-overlay: 100;
+    --z-base: 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    background: var(--color-bg-dark);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Focus Styles for Accessibility */
+  *:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+  }
+
+  button {
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  /* ========================================
+     SCROLL PROGRESS INDICATOR
+     ======================================== */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary), #ff6b6b);
+    z-index: var(--z-header);
+    transition: width 0.1s linear;
+  }
+
+  /* ========================================
+     SCROLL REVEAL ANIMATIONS
+     ======================================== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s var(--transition-smooth);
+  }
+
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ========================================
+     SECTION 1: ICE CONCEPT (Dark Mode)
+     ======================================== */
+  #ice-concept-section {
+    min-height: 100vh;
+    padding: 120px 5% 180px;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 40%, var(--color-bg-dark) 100%);
+    color: var(--color-text-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  /* Animated background particles */
+  .particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    opacity: 0.3;
+  }
+
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    animation: float var(--duration, 20s) linear infinite;
+    animation-delay: var(--delay, 0s);
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(100vh) translateX(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100vh) translateX(var(--drift, 100px));
+      opacity: 0;
+    }
+  }
+
+  .ice-main-header {
+    text-align: center;
+    margin-bottom: 100px;
+    max-width: 900px;
+    position: relative;
+    z-index: var(--z-base);
+  }
+
+  .ice-main-header h2 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+    animation: fadeInUp 1s var(--transition-smooth);
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .ice-main-header h2 span {
+    color: var(--color-primary);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .ice-main-header p {
+    color: var(--color-text-subtle);
+    font-size: 1.15rem;
+    font-weight: 300;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ========================================
+     ICE CYCLE DIAGRAM
+     ======================================== */
+  .ice-cycle-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .ice-center-text {
+    font-size: clamp(4rem, 10vw, 7rem);
+    font-weight: 800;
+    color: var(--color-text-light);
+    letter-spacing: -0.05em;
+    text-shadow: 0 0 60px var(--color-primary-glow);
+    z-index: 10;
+    position: relative;
+    user-select: none;
+    animation: breathe 4s ease-in-out infinite;
+  }
+
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  .ice-track-ring {
+    position: absolute;
+    width: 65%;
+    height: 65%;
+    border: 2px dashed rgba(255,255,255,0.1);
+    border-radius: 50%;
+    animation: spinSlow 120s linear infinite;
+  }
+
+  .ice-track-ring::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 0deg,
+      var(--color-primary) 0deg,
+      transparent 60deg,
+      transparent 300deg,
+      var(--color-primary) 360deg
+    );
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    padding: 4px;
+    filter: blur(2px);
+    opacity: 0.6;
+  }
+
+  @keyframes spinSlow {
+    to { transform: rotate(360deg); }
+  }
+
+  .ice-cycle-arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%) rotate(var(--rot));
+    animation: arrowPulse 3s ease-in-out infinite;
+    animation-delay: var(--pulse-delay, 0s);
+  }
+
+  @keyframes arrowPulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  .ice-cycle-arrow::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    border-top: 3px solid var(--color-primary);
+    border-right: 3px solid var(--color-primary);
+    transform: translateX(-50%) rotate(45deg);
+    filter: drop-shadow(0 0 8px var(--color-primary-glow));
+  }
+
+  /* ========================================
+     ICE NODES
+     ======================================== */
+  .ice-node {
+    position: absolute;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform var(--transition-speed) var(--transition-smooth);
+  }
+
+  .ice-node:hover {
+    transform: scale(1.05);
+  }
+
+  .ice-node.pos-1 { top: -5%; }
+  .ice-node.pos-2 { bottom: 8%; right: -8%; }
+  .ice-node.pos-3 { bottom: 8%; left: -8%; }
+
+  .ice-start-label {
+    position: absolute;
+    top: -60px;
+    color: var(--color-primary);
+    background: var(--color-primary-dim);
+    border: 1px solid rgba(255,0,0,0.4);
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .ice-start-label:hover,
+  .ice-start-label:focus {
+    background: var(--color-primary);
+    color: var(--color-text-light);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(255,0,0,0.4);
+  }
+
+  .ice-start-label:active {
+    transform: translateY(-2px);
+  }
+
+  .ice-dot-anchor {
+    width: 16px;
+    height: 16px;
+    background: var(--color-primary);
+    border-radius: 50%;
+    margin-bottom: 20px;
+    box-shadow:
+      0 0 20px var(--color-primary-glow),
+      0 0 40px var(--color-primary-glow);
+    animation: dotGlow 2s ease-in-out infinite;
+  }
+
+  @keyframes dotGlow {
+    0%, 100% {
+      box-shadow: 0 0 20px var(--color-primary-glow), 0 0 40px var(--color-primary-glow);
+    }
+    50% {
+      box-shadow: 0 0 30px var(--color-primary-glow), 0 0 60px var(--color-primary-glow);
+    }
+  }
+
+  .ice-node h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .ice-node p {
+    font-size: 0.9rem;
+    color: #888;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* ========================================
+     SECTION 2: SERVICES (Light Mode)
+     ======================================== */
+  #services-section {
+    min-height: 100vh;
+    padding: 180px 5% 120px;
+    background: var(--color-bg-light);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #services-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(
+      to bottom,
+      var(--color-bg-dark) 0%,
+      rgba(0,0,0,0.3) 40%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 100px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .section-header .tag {
+    color: var(--color-primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: block;
+    animation: slideDown 0.8s var(--transition-smooth);
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .section-header h2 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    color: var(--color-bg-dark);
+    letter-spacing: -0.03em;
+  }
+
+  /* ========================================
+     SERVICES ENGINE
+     ======================================== */
+  .services-engine {
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    padding: 80px 0;
+    z-index: 2;
+  }
+
+  .engine-path {
+    position: absolute;
+    top: 120px;
+    left: 15%;
+    right: 15%;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0,0,0,0.06) 20%,
+      rgba(0,0,0,0.06) 80%,
+      transparent
+    );
+    z-index: 1;
+  }
+
+  .path-pulse {
+    position: absolute;
+    top: -4px;
+    left: -100%;
+    width: 80px;
+    height: 10px;
+    background: linear-gradient(90deg, transparent, rgba(255,0,0,0.4), transparent);
+    animation: flowPulse 3s infinite ease-in-out;
+    border-radius: 10px;
+  }
+
+  @keyframes flowPulse {
+    to { left: 120%; }
+  }
+
+  .engine-node {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+    transition: transform var(--transition-speed) ease;
+  }
+
+  .engine-node:hover {
+    transform: translateY(-12px);
+  }
+
+  .node-hud-frame {
+    width: 180px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 32px;
+    position: relative;
+    background: rgba(0,0,0,0.02);
+    border-radius: 12px;
+    transition: all var(--transition-speed) ease;
+    overflow: hidden;
+  }
+
+  .engine-node:hover .node-hud-frame {
+    background: rgba(255,0,0,0.03);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  }
+
+  .node-hud-frame::before,
+  .node-hud-frame::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 2px solid rgba(0,0,0,0.06);
+    transition: all var(--transition-speed) ease;
+  }
+
+  .node-hud-frame::before {
+    top: -8px;
+    left: -8px;
+    border-right: none;
+    border-bottom: none;
+  }
+
+  .node-hud-frame::after {
+    bottom: -8px;
+    right: -8px;
+    border-left: none;
+    border-top: none;
+  }
+
+  .engine-node:hover .node-hud-frame::before {
+    transform: translate(-4px, -4px);
+    border-color: var(--color-primary);
+  }
+
+  .engine-node:hover .node-hud-frame::after {
+    transform: translate(4px, 4px);
+    border-color: var(--color-primary);
+  }
+
+  .node-hud-frame img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    transition: transform var(--transition-speed) ease;
+  }
+
+  .engine-node:hover img {
+    transform: scale(1.1);
+  }
+
+  .node-meta {
+    position: absolute;
+    bottom: -8px;
+    font-size: 0.55rem;
+    font-weight: 700;
+    color: #bbb;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .engine-node h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+  }
+
+  .engine-node p {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 280px;
+  }
+
+  /* ========================================
+     SECTION 3: REVIEWS
+     ======================================== */
+  #reviews-section {
+    padding: 100px 5% 180px;
+    background: var(--color-bg-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .reviews-grid {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  .review-card {
+    padding: 44px 36px;
+    background: var(--color-bg-light);
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    transition: all var(--transition-speed) var(--transition-smooth);
+    opacity: 0;
+    transform: translateY(40px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .review-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-speed) var(--transition-smooth);
+  }
+
+  .review-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .review-card.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .review-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  }
+
+  .review-card p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    font-weight: 300;
+    font-style: italic;
+    color: #333;
+    margin-bottom: 32px;
+    position: relative;
+  }
+
+  .review-card p::before {
+    content: '"';
+    font-size: 4rem;
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    color: rgba(255,0,0,0.1);
+    font-style: normal;
+    line-height: 1;
+  }
+
+  .author-info {
+    border-top: 1px solid rgba(0,0,0,0.06);
+    padding-top: 20px;
+  }
+
+  .author-info h4 {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-text-dark);
+    margin-bottom: 6px;
+  }
+
+  .author-info span {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--color-text-subtle);
+  }
+
+  /* ========================================
+     MODAL
+     ======================================== */
+  .ice-modal {
+    display: none;
+    position: fixed;
+    z-index: var(--z-modal);
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .ice-modal.show {
+    display: flex;
+  }
+
+  .modal-box {
+    background: #0d0d0d;
+    color: var(--color-text-light);
+    padding: 50px 40px;
+    border-radius: 24px;
+    border: 1px solid #222;
+    width: 100%;
+    max-width: 650px;
+    position: relative;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideUp 0.4s var(--transition-smooth);
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Custom scrollbar for modal */
+  .modal-box::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .modal-box::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 4px;
+  }
+
+  .modal-box::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+  }
+
+  .modal-box::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    font-size: 2rem;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+    line-height: 1;
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+  }
+
+  .modal-close:hover,
+  .modal-close:focus {
+    color: var(--color-primary);
+    transform: rotate(90deg);
+    background: rgba(255,255,255,0.05);
+  }
+
+  .modal-box h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    letter-spacing: -0.03em;
+  }
+
+  .diagnostic-description {
+    font-size: 1rem;
+    color: #aaa;
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  .diagnostic-description b {
+    color: var(--color-text-light);
+    font-weight: 600;
+  }
+
+  .ai-brain-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    color: var(--color-primary);
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+  }
+
+  .ai-brain-header::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--color-primary-glow);
+  }
+
+  .ai-input-group {
+    margin-bottom: 24px;
+  }
+
+  .ai-label {
+    display: block;
+    color: #777;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .ai-textarea {
+    width: 100%;
+    background: #141414;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 16px;
+    color: var(--color-text-light);
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.6;
+  }
+
+  .ai-textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(255,0,0,0.1);
+  }
+
+  .ai-textarea::placeholder {
+    color: #555;
+  }
+
+  .ai-btn {
+    width: 100%;
+    background: var(--color-bg-light);
+    color: var(--color-bg-dark);
+    border: none;
+    padding: 18px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s var(--transition-smooth);
+  }
+
+  .ai-btn:hover::before {
+    transform: scaleX(1);
+  }
+
+  .ai-btn:hover {
+    color: var(--color-text-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--color-primary-glow);
+  }
+
+  .ai-btn:active {
+    transform: translateY(0);
+  }
+
+  .ai-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .ai-btn:disabled:hover::before {
+    transform: scaleX(0);
+  }
+
+  #btn-text,
+  #btn-loading {
+    position: relative;
+    z-index: 1;
+  }
+
+  .ai-result {
+    margin-top: 32px;
+    padding: 28px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    border: 1px dashed #333;
+    display: none;
+  }
+
+  .ai-result.active {
+    display: block;
+    animation: resultFadeIn 0.5s ease;
+  }
+
+  @keyframes resultFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .ai-result-header {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    letter-spacing: 0.2em;
+    margin-bottom: 12px;
+  }
+
+  .ai-result-content {
+    font-size: 0.95rem;
+    color: #ddd;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .loading-dots {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    background: currentColor;
+    border-radius: 50%;
+    animation: dotPulse 1.4s infinite;
+  }
+
+  .dot:nth-child(2) { animation-delay: 0.2s; }
+  .dot:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes dotPulse {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+
+  /* ========================================
+     BACK TO TOP BUTTON
+     ======================================== */
+  .back-to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    background: var(--color-primary);
+    color: var(--color-text-light);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: var(--z-overlay);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px var(--color-primary-glow);
+  }
+
+  .back-to-top:active {
+    transform: translateY(-2px);
+  }
+
+  /* ========================================
+     API KEY WARNING
+     ======================================== */
+  .api-warning {
+    background: rgba(255,165,0,0.1);
+    border: 1px solid rgba(255,165,0,0.3);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    font-size: 0.8rem;
+    color: #ffaa00;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .api-warning::before {
+    content: '⚠️';
+    font-size: 1.2rem;
+  }
+
+  /* ========================================
+     RESPONSIVE DESIGN
+     ======================================== */
+  @media (max-width: 1000px) {
+    .ice-cycle-wrapper {
+      transform: scale(0.85);
+    }
+
+    .ice-main-header {
+      text-align: center;
+    }
+
+    #ice-concept-section {
+      padding-bottom: 120px;
+    }
+
+    .services-engine {
+      flex-direction: column;
+      gap: 80px;
+      padding: 60px 0;
+    }
+
+    .engine-path {
+      display: none;
+    }
+
+    .engine-node {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .reviews-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .back-to-top {
+      bottom: 20px;
+      right: 20px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    #ice-concept-section {
+      padding: 80px 5% 100px;
+    }
+
+    .ice-main-header h2 {
+      font-size: 2rem;
+    }
+
+    .ice-main-header p {
+      font-size: 1rem;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+    }
+
+    .modal-box {
+      padding: 40px 24px;
+    }
+
+    .ice-node {
+      width: 180px;
+    }
+
+    .ice-node h3 {
+      font-size: 1.1rem;
+    }
+
+    .ice-node p {
+      font-size: 0.85rem;
+    }
+
+    .ice-center-text {
+      font-size: 3rem;
+    }
+
+    .node-hud-frame {
+      width: 140px;
+      height: 140px;
+    }
+  }
+
+  /* ========================================
+     PRINT STYLES
+     ======================================== */
+  @media print {
+    .scroll-progress,
+    .back-to-top,
+    .ice-start-label,
+    .ice-modal {
+      display: none !important;
+    }
+
+    body {
+      background: white;
+      color: black;
+    }
+  }
+
+  /* ========================================
+     ACCESSIBILITY - REDUCED MOTION
+     ======================================== */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  /* ========================================
+     UTILITY CLASSES
+     ======================================== */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .no-scroll {
+    overflow: hidden;
+  }
+</style>
+</head>
+<body>
+
+<!-- Scroll Progress Indicator -->
+<div class="scroll-progress" role="progressbar" aria-label="Page scroll progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+<!-- ========================================
+     SECTION 1: ICE CONCEPT
+     ======================================== -->
+<section id="ice-concept-section" aria-labelledby="ice-heading">
+  <!-- Animated background particles -->
+  <div class="particles" aria-hidden="true"></div>
+
+  <header class="ice-main-header reveal active">
+    <h2 id="ice-heading">How we build better businesses<span>.</span></h2>
+    <p>A repeating cycle of improvement engineered for founders who demand absolute financial clarity.</p>
+  </header>
+
+  <div class="ice-cycle-wrapper reveal active" role="img" aria-label="ICE Model Cycle Diagram showing Identify, Cleanse, and Execute phases">
+    <div class="ice-center-text" aria-hidden="true">ICE</div>
+    <div class="ice-track-ring" aria-hidden="true">
+      <div class="ice-cycle-arrow" style="--rot: 0deg; --pulse-delay: 0s;"></div>
+      <div class="ice-cycle-arrow" style="--rot: 120deg; --pulse-delay: 1s;"></div>
+      <div class="ice-cycle-arrow" style="--rot: 240deg; --pulse-delay: 2s;"></div>
+    </div>
+
+    <article class="ice-node pos-1">
+      <button
+        class="ice-start-label"
+        onclick="toggleModal()"
+        aria-label="Start here - Open diagnostic tool"
+        type="button"
+      >
+        ✨ Start Here
+      </button>
+      <div class="ice-dot-anchor" aria-hidden="true"></div>
+      <h3>Identify</h3>
+      <p>Define the problem and outcome. Find the gaps others miss.</p>
+    </article>
+
+    <article class="ice-node pos-2">
+      <div class="ice-dot-anchor" aria-hidden="true"></div>
+      <h3>Cleanse</h3>
+      <p>Remove the clutter. Reset the base for reliable scaling.</p>
+    </article>
+
+    <article class="ice-node pos-3">
+      <div class="ice-dot-anchor" aria-hidden="true"></div>
+      <h3>Execute</h3>
+      <p>Build the system. Prove the model. Roll out the cycle.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ========================================
+     SECTION 2: SERVICES
+     ======================================== -->
+<section id="services-section" aria-labelledby="services-heading">
+  <header class="section-header reveal">
+    <span class="tag">Process Architecture</span>
+    <h2 id="services-heading">The Antlab Engine<span style="color: var(--color-primary);">.</span></h2>
+  </header>
+
+  <div class="services-engine reveal">
+    <div class="engine-path" aria-hidden="true">
+      <div class="path-pulse"></div>
+    </div>
+
+    <article class="engine-node">
+      <div class="node-hud-frame">
+        <img
+          src="https://static1.squarespace.com/static/6864b21924d1db33e17adca9/t/6943b18c822fa50853adf7d3/1766044069118/Ant_Shield+%282%29.gif"
+          alt="Bookkeeping shield icon"
+          loading="lazy"
+        >
+        <div class="node-meta" aria-hidden="true">STATUS: INTEGRITY SCAN</div>
+      </div>
+      <h3>Bookkeeping</h3>
+      <p>Audit Ready & Seamless. We turn forensic data into your business foundation.</p>
+    </article>
+
+    <article class="engine-node">
+      <div class="node-hud-frame">
+        <img
+          src="https://static1.squarespace.com/static/6864b21924d1db33e17adca9/t/6943b18c4ffe0b625b0301c1/1766044070023/Ant_Gavel+%281%29.gif"
+          alt="Tax compliance gavel icon"
+          loading="lazy"
+        >
+        <div class="node-meta" aria-hidden="true">STATUS: COMPLIANCE FLOW</div>
+      </div>
+      <h3>Tax & Compliance</h3>
+      <p>Simple & Tax Efficient. Frictionless reporting optimized for founder peace of mind.</p>
+    </article>
+
+    <article class="engine-node">
+      <div class="node-hud-frame">
+        <img
+          src="https://static1.squarespace.com/static/6864b21924d1db33e17adca9/t/6943b18cf407472920a4cd9c/1766044069658/Ant_Binoculars+%284%29.gif"
+          alt="Advisory binoculars icon"
+          loading="lazy"
+        >
+        <div class="node-meta" aria-hidden="true">STATUS: GROWTH VISION</div>
+      </div>
+      <h3>Advisory</h3>
+      <p>Measurable Growth Metrics. High-impact strategy driven by forensic-grade numbers.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ========================================
+     SECTION 3: REVIEWS
+     ======================================== -->
+<section id="reviews-section" aria-labelledby="reviews-heading">
+  <header class="section-header reveal">
+    <span class="tag">Validated Growth</span>
+    <h2 id="reviews-heading">Client Reviews<span style="color: var(--color-primary);">.</span></h2>
+  </header>
+
+  <div class="reviews-grid">
+    <article class="review-card reveal">
+      <p>"Antlab completely restructured our financial reporting. We now have clarity we never thought possible."</p>
+      <footer class="author-info">
+        <h4>Sarah Jenkins</h4>
+        <span>CEO, TechVision</span>
+      </footer>
+    </article>
+
+    <article class="review-card reveal">
+      <p>"The ICE model actually works. It's not just bookkeeping; it's a strategic partnership for growth."</p>
+      <footer class="author-info">
+        <h4>Marcus Thorne</h4>
+        <span>Founder, BlueOak Ltd</span>
+      </footer>
+    </article>
+
+    <article class="review-card reveal">
+      <p>"Simple, effective, and professional. Their tax compliance takes all the stress out of our monthly cycles."</p>
+      <footer class="author-info">
+        <h4>Elena Rodriguez</h4>
+        <span>Operations Director</span>
+      </footer>
+    </article>
+  </div>
+</section>
+
+<!-- ========================================
+     MODAL: XERO CLEAN + AI BRAIN
+     ======================================== -->
+<div
+  id="modal"
+  class="ice-modal"
+  onclick="toggleModal()"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title"
+  aria-hidden="true"
+>
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <button
+      class="modal-close"
+      onclick="toggleModal()"
+      aria-label="Close modal"
+      type="button"
+    >
+      &times;
+    </button>
+
+    <h3 id="modal-title">Xero Clean + KPI Diagnostic</h3>
+
+    <div class="diagnostic-description">
+      The <b>Identify</b> phase starts with a forensic-grade <b>Xero Clean</b>. We dive into your historical data to reset your financial base. Once clean, we build your <b>KPI Diagnostic framework</b> to measure what matters.
+    </div>
+
+    <!-- API Key Warning -->
+    <div class="api-warning" role="alert">
+      <span>Add your Gemini API key in the JavaScript section to enable AI diagnostics</span>
+    </div>
+
+    <div class="ai-brain-header" aria-hidden="true">Antlab Intelligence Brain</div>
+
+    <form onsubmit="event.preventDefault(); runDiagnostic();" aria-labelledby="modal-title">
+      <div class="ai-input-group">
+        <label for="ai-context" class="ai-label">Input Business Bottleneck</label>
+        <textarea
+          id="ai-context"
+          class="ai-textarea"
+          placeholder="e.g. Scaling past $5M ARR but bookkeeping is messy..."
+          aria-describedby="ai-context-help"
+          required
+        ></textarea>
+        <span id="ai-context-help" class="sr-only">Describe your business challenge or bottleneck for AI analysis</span>
+      </div>
+
+      <button
+        id="ai-trigger"
+        class="ai-btn"
+        type="submit"
+        aria-live="polite"
+        aria-busy="false"
+      >
+        <span id="btn-text">✨ Initiate Forensic Brain Scan</span>
+        <div id="btn-loading" class="loading-dots" style="display:none;" aria-hidden="true">
+          <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+        </div>
+      </button>
+    </form>
+
+    <div id="ai-display" class="ai-result" role="status" aria-live="polite">
+      <div class="ai-result-header">Preliminary Analysis</div>
+      <div id="ai-output" class="ai-result-content"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Back to Top Button -->
+<button
+  class="back-to-top"
+  onclick="scrollToTop()"
+  aria-label="Back to top"
+  type="button"
+>
+  ↑
+</button>
+
+<script>
+  /* ========================================
+     CONFIGURATION
+     ======================================== */
+  const CONFIG = {
+    apiKey: "", // ⚠️ IMPORTANT: Add your Gemini API key here
+    geminiModel: "gemini-2.0-flash-exp",
+    maxRetries: 5,
+    initialDelay: 1000,
+    particleCount: 30
+  };
+
+  const ANTLAB_SYSTEM_PROMPT = `
+    You are the Antlab Forensic AI Brain. Your role is to analyze a business owner's
+    problems through the lens of the ICE (Identify, Cleanse, Execute) model.
+
+    YOUR CORE RULES:
+    1. Your first recommendation must ALWAYS be a "Xero Clean + KPI Diagnostic".
+    2. Be direct, authoritative, and minimalist.
+    3. Focus on how forensic-grade data prevents "scaling on a messy base".
+    4. Speak like an elite strategic consultant. No corporate fluff.
+    5. Maximum length: 120 words.
+  `;
+
+  /* ========================================
+     SCROLL PROGRESS INDICATOR
+     ======================================== */
+  function updateScrollProgress() {
+    const scrollProgress = document.querySelector('.scroll-progress');
+    const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (window.scrollY / windowHeight) * 100;
+
+    scrollProgress.style.width = `${scrolled}%`;
+    scrollProgress.setAttribute('aria-valuenow', Math.round(scrolled));
+  }
+
+  /* ========================================
+     BACKGROUND PARTICLES
+     ======================================== */
+  function createParticles() {
+    const particlesContainer = document.querySelector('.particles');
+    if (!particlesContainer) return;
+
+    for (let i = 0; i < CONFIG.particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.setProperty('--duration', `${15 + Math.random() * 20}s`);
+      particle.style.setProperty('--delay', `${Math.random() * 10}s`);
+      particle.style.setProperty('--drift', `${(Math.random() - 0.5) * 200}px`);
+      particle.style.left = `${Math.random() * 100}%`;
+      particlesContainer.appendChild(particle);
+    }
+  }
+
+  /* ========================================
+     MODAL MANAGEMENT
+     ======================================== */
+  function toggleModal() {
+    const modal = document.getElementById('modal');
+    const isShowing = modal.classList.toggle('show');
+
+    // Update ARIA attribute
+    modal.setAttribute('aria-hidden', !isShowing);
+
+    // Manage body scroll
+    document.body.classList.toggle('no-scroll', isShowing);
+
+    // Focus management
+    if (isShowing) {
+      const firstInput = modal.querySelector('textarea');
+      if (firstInput) {
+        setTimeout(() => firstInput.focus(), 100);
+      }
+    } else {
+      // Reset form
+      const textarea = document.getElementById('ai-context');
+      const aiDisplay = document.getElementById('ai-display');
+      if (textarea) textarea.value = '';
+      if (aiDisplay) aiDisplay.classList.remove('active');
+    }
+  }
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const modal = document.getElementById('modal');
+      if (modal.classList.contains('show')) {
+        toggleModal();
+      }
+    }
+  });
+
+  /* ========================================
+     GEMINI API INTEGRATION
+     ======================================== */
+  async function callGemini(userQuery, retries = CONFIG.maxRetries, delay = CONFIG.initialDelay) {
+    if (!CONFIG.apiKey) {
+      throw new Error('API key not configured. Please add your Gemini API key to enable this feature.');
+    }
+
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${CONFIG.geminiModel}:generateContent?key=${CONFIG.apiKey}`;
+
+    const payload = {
+      contents: [{ parts: [{ text: userQuery }] }],
+      systemInstruction: { parts: [{ text: ANTLAB_SYSTEM_PROMPT }] },
+      generationConfig: {
+        temperature: 0.7,
+        maxOutputTokens: 500,
+      }
+    };
+
+    for (let i = 0; i < retries; i++) {
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}));
+          throw new Error(errorData.error?.message || `API error: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+
+        if (!text) {
+          throw new Error('Invalid API response format');
+        }
+
+        return text;
+      } catch (error) {
+        console.error(`Attempt ${i + 1} failed:`, error);
+
+        if (i === retries - 1) throw error;
+
+        // Exponential backoff
+        await new Promise(resolve => setTimeout(resolve, delay));
+        delay *= 2;
+      }
+    }
+  }
+
+  /* ========================================
+     AI DIAGNOSTIC RUNNER
+     ======================================== */
+  async function runDiagnostic() {
+    const context = document.getElementById('ai-context').value.trim();
+    const btnText = document.getElementById('btn-text');
+    const btnLoading = document.getElementById('btn-loading');
+    const aiTrigger = document.getElementById('ai-trigger');
+    const aiDisplay = document.getElementById('ai-display');
+    const aiOutput = document.getElementById('ai-output');
+
+    if (!context) {
+      aiOutput.innerText = "Please describe your business bottleneck to receive analysis.";
+      aiDisplay.classList.add('active');
+      return;
+    }
+
+    // Update UI to loading state
+    aiTrigger.disabled = true;
+    aiTrigger.setAttribute('aria-busy', 'true');
+    btnText.style.display = 'none';
+    btnLoading.style.display = 'flex';
+    aiDisplay.classList.remove('active');
+
+    try {
+      const insight = await callGemini(context);
+      aiOutput.innerText = insight;
+      aiDisplay.classList.add('active');
+
+      // Announce to screen readers
+      aiOutput.setAttribute('role', 'status');
+      aiOutput.setAttribute('aria-live', 'polite');
+    } catch (error) {
+      console.error('Diagnostic error:', error);
+
+      let errorMessage = "Neural link offline. ";
+
+      if (error.message.includes('API key')) {
+        errorMessage += "Please configure your API key in the JavaScript section.";
+      } else if (error.message.includes('quota') || error.message.includes('limit')) {
+        errorMessage += "API quota exceeded. Please try again later or contact Antlab support.";
+      } else {
+        errorMessage += "Please contact Antlab support directly for a manual forensic scan.";
+      }
+
+      aiOutput.innerText = errorMessage;
+      aiDisplay.classList.add('active');
+    } finally {
+      // Reset UI
+      aiTrigger.disabled = false;
+      aiTrigger.setAttribute('aria-busy', 'false');
+      btnText.style.display = 'block';
+      btnLoading.style.display = 'none';
+    }
+  }
+
+  /* ========================================
+     SCROLL REVEAL ANIMATION
+     ======================================== */
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+
+        // Stagger animation for review cards
+        if (entry.target.classList.contains('reviews-grid')) {
+          const children = entry.target.children;
+          Array.from(children).forEach((child, i) => {
+            setTimeout(() => child.classList.add('active'), i * 150);
+          });
+        }
+      }
+    });
+  }, observerOptions);
+
+  // Observe all reveal elements
+  document.querySelectorAll('.reveal, .review-card, .reviews-grid').forEach(el => {
+    observer.observe(el);
+  });
+
+  /* ========================================
+     BACK TO TOP BUTTON
+     ======================================== */
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  function updateBackToTopButton() {
+    const button = document.querySelector('.back-to-top');
+    const scrolled = window.scrollY;
+
+    if (scrolled > 500) {
+      button.classList.add('visible');
+    } else {
+      button.classList.remove('visible');
+    }
+  }
+
+  /* ========================================
+     SMOOTH SCROLL FOR ANCHOR LINKS
+     ======================================== */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+
+  /* ========================================
+     EVENT LISTENERS
+     ======================================== */
+  let scrollTimeout;
+  window.addEventListener('scroll', () => {
+    updateScrollProgress();
+    updateBackToTopButton();
+
+    // Debounce intensive operations
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      // Additional scroll-based operations
+    }, 100);
+  }, { passive: true });
+
+  // Handle window resize
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      // Responsive adjustments
+    }, 250);
+  });
+
+  /* ========================================
+     INITIALIZATION
+     ======================================== */
+  document.addEventListener('DOMContentLoaded', () => {
+    createParticles();
+    updateScrollProgress();
+    updateBackToTopButton();
+
+    // Log initialization
+    console.log('%c🐜 Antlab Engine Initialized', 'color: #FF0000; font-weight: bold; font-size: 16px;');
+
+    if (!CONFIG.apiKey) {
+      console.warn('%c⚠️ API Key not configured. AI features will be disabled.', 'color: orange; font-weight: bold;');
+    }
+  });
+
+  /* ========================================
+     PERFORMANCE MONITORING
+     ======================================== */
+  if ('performance' in window) {
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const perfData = performance.getEntriesByType('navigation')[0];
+        console.log('Page Load Time:', Math.round(perfData.loadEventEnd - perfData.fetchStart), 'ms');
+      }, 0);
+    });
+  }
+</script>
+
+</body>
+</html>
