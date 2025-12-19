@@ -322,11 +322,11 @@
   }
 
   .ice-main-header h2 {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    font-weight: 900;
-    line-height: 1.05;
-    letter-spacing: -0.04em;
-    margin-bottom: 24px;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
     animation: fadeInUp 1s var(--transition-smooth);
     font-feature-settings: 'ss01' 1, 'cv05' 1;
   }
@@ -353,13 +353,14 @@
   }
 
   .ice-main-header p {
-    color: var(--color-text-subtle);
-    font-size: var(--text-lg);
+    color: #999;
+    font-size: 0.8rem;
     font-weight: 400;
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.7;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
   }
 
   /* ========================================
@@ -1311,11 +1312,11 @@
     }
 
     .ice-main-header h2 {
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
 
     .ice-main-header p {
-      font-size: 1rem;
+      font-size: 0.7rem;
     }
 
     .section-header h2 {
@@ -1458,6 +1459,7 @@
 
   <header class="ice-main-header reveal active">
     <h2 id="ice-heading">How we build better businesses<span>.</span></h2>
+    <p>A repeating cycle of improvement</p>
   </header>
 
   <div class="ice-cycle-wrapper reveal active" role="img" aria-label="ICE Model Cycle Diagram showing Identify, Cleanse, and Execute phases">
@@ -1980,6 +1982,18 @@
     updateScrollProgress();
     updateBackToTopButton();
     updateHeader();
+
+    // Force hero video to play
+    const heroVideo = document.querySelector('.hero-video');
+    if (heroVideo) {
+      heroVideo.play().catch(err => {
+        console.log('Video autoplay prevented:', err);
+        // Try again on user interaction
+        document.addEventListener('click', () => {
+          heroVideo.play();
+        }, { once: true });
+      });
+    }
 
     // Log initialization
     console.log('%c🐜 Antlab Engine Initialized', 'color: #FF0000; font-weight: bold; font-size: 16px;');
