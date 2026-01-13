@@ -230,6 +230,40 @@
   }
 
   /* ========================================
+     PERFORMANCE ACCOUNTING SECTION
+     ======================================== */
+  #performance-accounting-section {
+    padding: 120px 5% 100px;
+    background: var(--color-bg-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .performance-header {
+    text-align: center;
+    max-width: 900px;
+  }
+
+  .performance-header h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: var(--color-text-light);
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+    font-feature-settings: 'ss01' 1, 'cv05' 1;
+  }
+
+  .performance-header p {
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
+    color: var(--color-text-subtle);
+    line-height: 1.6;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* ========================================
      SCROLL PROGRESS INDICATOR
      ======================================== */
   .scroll-progress {
@@ -1307,6 +1341,18 @@
       font-size: 0.6rem;
     }
 
+    #performance-accounting-section {
+      padding: 80px 5% 60px;
+    }
+
+    .performance-header h2 {
+      font-size: 1.75rem;
+    }
+
+    .performance-header p {
+      font-size: 1rem;
+    }
+
     #ice-concept-section {
       padding: 80px 5% 100px;
     }
@@ -1426,27 +1472,25 @@
      HERO SECTION WITH VIDEO
      ======================================== -->
 <section class="hero-section" aria-label="Building Better Businesses">
-  <!-- Video Background -->
+  <!-- Black Placeholder Background -->
   <div class="hero-video-wrapper">
-    <video
-      class="hero-video"
-      autoplay
-      muted
-      loop
-      playsinline
-      poster="https://video.squarespace-cdn.com/content/v1/6864b21924d1db33e17adca9/64a971e0-a688-496b-a2ca-0fe688374f10/thumbnail"
-    >
-      <source src="https://video.squarespace-cdn.com/content/v1/6864b21924d1db33e17adca9/64a971e0-a688-496b-a2ca-0fe688374f10/1080p.mp4" type="video/mp4">
-      <source src="https://video.squarespace-cdn.com/content/v1/6864b21924d1db33e17adca9/64a971e0-a688-496b-a2ca-0fe688374f10/720p.mp4" type="video/mp4">
-      <source src="https://video.squarespace-cdn.com/content/v1/6864b21924d1db33e17adca9/64a971e0-a688-496b-a2ca-0fe688374f10/480p.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+    <div style="width: 100%; height: 100%; background: #000;"></div>
     <div class="hero-overlay" aria-hidden="true"></div>
   </div>
 
   <!-- Scroll Indicator -->
   <div class="hero-scroll-indicator" aria-hidden="true">
     Scroll to explore
+  </div>
+</section>
+
+<!-- ========================================
+     PERFORMANCE ACCOUNTING SECTION
+     ======================================== -->
+<section id="performance-accounting-section">
+  <div class="performance-header">
+    <h2>Performance Accounting</h2>
+    <p>Clean inputs. Clean outputs. Better decisions.</p>
   </div>
 </section>
 
@@ -1458,11 +1502,11 @@
   <div class="particles" aria-hidden="true"></div>
 
   <header class="ice-main-header reveal active">
-    <h2 id="ice-heading">How we build better businesses<span>.</span></h2>
-    <p>A repeating cycle of improvement</p>
+    <h2 id="ice-heading">Our method is ICE<span>:</span></h2>
+    <p>Business is won in the numbers.</p>
   </header>
 
-  <div class="ice-cycle-wrapper reveal active" role="img" aria-label="ICE Model Cycle Diagram showing Identify, Cleanse, and Execute phases">
+  <div class="ice-cycle-wrapper reveal active" role="img" aria-label="ICE Model Cycle Diagram showing Identify, Clarify, and Execute phases">
     <div class="ice-center-text" aria-hidden="true">ICE</div>
     <div class="ice-track-ring" aria-hidden="true">
       <div class="ice-cycle-arrow" style="--rot: 0deg; --pulse-delay: 0s;"></div>
@@ -1481,19 +1525,19 @@
       </button>
       <div class="ice-dot-anchor" aria-hidden="true"></div>
       <h3>Identify</h3>
-      <p>Identify the problem, define the outcome, and choose one North Star metric that moves and measures that outcome. Set the plan.</p>
+      <p>Identify what's really happening — and what "better" looks like.</p>
     </article>
 
     <article class="ice-node pos-2">
       <div class="ice-dot-anchor" aria-hidden="true"></div>
-      <h3>Cleanse</h3>
-      <p>Remove the mess. Fix the data so decisions are trustworthy. Cut noise before building.</p>
+      <h3>Clarify</h3>
+      <p>Clarify the books, data, and structure (audit-ready).</p>
     </article>
 
     <article class="ice-node pos-3">
       <div class="ice-dot-anchor" aria-hidden="true"></div>
       <h3>Execute</h3>
-      <p>Build the solution. Measure against the North Star and the outcome. <span style="text-decoration: underline; text-decoration-color: #FF0000; text-underline-offset: 2px;">Repeat</span>.</p>
+      <p>Execute a model and rhythm that keeps it clean month after month.</p>
     </article>
   </div>
 </section>
